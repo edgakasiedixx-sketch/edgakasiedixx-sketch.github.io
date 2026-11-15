@@ -2,198 +2,359 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08090c">
-  <meta name="description" content="The personal portfolio and digital identity of Your Name.">
-  <title>Your Name — Personal Brand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070a12">
+  <meta name="description" content="The personal portfolio of Edga Remmy Kasinisala, also known as Kasiedixx — student, athlete and creative designer from Tanzania.">
+  <title>Edga Remmy Kasinisala | Kasiedixx</title>
+
   <style>
     :root {
-      --bg: #08090c;
-      --panel: #101217;
-      --panel-2: #151820;
-      --text: #f4f1e9;
-      --muted: #a5a6ad;
-      --gold: #d8b56a;
-      --gold-light: #f0d99e;
-      --line: rgba(216,181,106,.22);
-      --max: 1120px;
+      --background: #070a12;
+      --panel: rgba(15, 22, 36, .84);
+      --gold: #e8bd68;
+      --gold-light: #ffe5a8;
+      --blue: #43b5ff;
+      --text: #f5f7fc;
+      --muted: #aab5c7;
+      --line: rgba(92, 166, 220, .24);
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0; background:
-        radial-gradient(circle at 80% 8%, rgba(216,181,106,.10), transparent 28rem),
-        radial-gradient(circle at 5% 45%, rgba(82,94,135,.10), transparent 26rem),
-        var(--bg);
-      color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(22, 115, 190, .24), transparent 34%),
+        radial-gradient(ellipse at 88% 34%, rgba(15, 77, 155, .20), transparent 38%),
+        linear-gradient(145deg, #05070d, #0b1424 55%, #070a12);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.75;
+      overflow-x: hidden;
     }
+
+    /* Subtle blue water-like waves */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      left: -18%;
+      width: 136%;
+      height: 190px;
+      border: 1px solid rgba(67, 181, 255, .13);
+      border-radius: 48% 52% 0 0;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(1px);
+    }
+    body::before {
+      bottom: -105px;
+      transform: rotate(-5deg);
+      box-shadow: 0 -20px 65px rgba(31, 145, 230, .13);
+    }
+    body::after {
+      bottom: -132px;
+      transform: rotate(4deg);
+      box-shadow: 0 -18px 75px rgba(67, 181, 255, .10);
+    }
+
     a { color: inherit; text-decoration: none; }
-    .wrap { width: min(var(--max), calc(100% - 44px)); margin: auto; }
-    .topbar {
-      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(18px);
-      background: rgba(8,9,12,.78); border-bottom: 1px solid rgba(255,255,255,.07);
+    .container { width: min(1080px, 90%); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5, 9, 17, .88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
     }
-    nav { min-height: 76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-    .brand { font-size: .9rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 800; }
-    .brand span { color: var(--gold); }
-    .navlinks { display:flex; gap:25px; color:var(--muted); font-size:.85rem; }
-    .navlinks a:hover { color:var(--gold-light); }
-    .menu { display:none; border:1px solid var(--line); background:transparent; color:var(--text); padding:8px 12px; border-radius:8px; }
-    .hero { min-height: 680px; display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:50px; padding:90px 0 100px; }
-    .eyebrow { color:var(--gold); text-transform:uppercase; letter-spacing:.24em; font-size:.72rem; font-weight:700; }
-    h1 { font-size:clamp(3.3rem, 8vw, 6.8rem); line-height:.98; letter-spacing:-.065em; margin:22px 0; }
-    h1 em { color:var(--gold-light); font-style:normal; }
-    .lead { max-width:620px; color:#c0c0c5; font-size:1.12rem; }
-    .actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:32px; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; padding:13px 20px; border-radius:999px; font-size:.88rem; font-weight:700; transition:.2s; }
-    .primary { background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:#17130b; }
-    .primary:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(216,181,106,.2); }
-    .secondary { border:1px solid var(--line); color:var(--text); }
-    .secondary:hover { border-color:var(--gold); color:var(--gold-light); }
-    .visual { position:relative; min-height:430px; display:grid; place-items:center; }
-    .orbit { width:min(390px,82vw); aspect-ratio:1; border:1px solid rgba(216,181,106,.32); border-radius:50%; position:absolute; animation:spin 35s linear infinite; }
-    .orbit:before,.orbit:after { content:""; position:absolute; border:1px solid rgba(216,181,106,.18); border-radius:50%; inset:25px; }
-    .orbit:after { inset:58px; border-style:dashed; }
-    .orbit-dot { position:absolute; width:10px; height:10px; border-radius:50%; background:var(--gold-light); top:13%; left:20%; box-shadow:0 0 22px var(--gold); }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .portrait {
-      width:270px; aspect-ratio:4/5; border-radius:150px 150px 28px 28px;
-      border:1px solid rgba(216,181,106,.5); background:linear-gradient(145deg,#242630,#111319 65%);
-      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
-      box-shadow:0 25px 90px rgba(0,0,0,.5), inset 0 0 50px rgba(216,181,106,.05); position:relative; overflow:hidden;
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
-    .portrait:before { content:""; position:absolute; width:220px; height:220px; border-radius:50%; background:rgba(216,181,106,.10); filter:blur(40px); top:15px; }
-    .portrait .monogram { font-size:5rem; color:var(--gold-light); font-weight:300; letter-spacing:-.1em; position:relative; }
-    .portrait small { color:var(--muted); letter-spacing:.18em; text-transform:uppercase; font-size:.62rem; position:relative; }
-    section { padding:92px 0; border-top:1px solid rgba(255,255,255,.06); }
-    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:38px; }
-    h2 { font-size:clamp(2rem,4vw,3.3rem); letter-spacing:-.045em; line-height:1.1; margin:10px 0 0; }
-    .section-note { max-width:400px; color:var(--muted); font-size:.92rem; }
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
-    .card { background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015)); border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:28px; }
-    .card h3 { margin:0 0 12px; font-size:1.1rem; }
-    .card p { color:var(--muted); margin:0; }
-    .quote { font-size:1.45rem; line-height:1.45; color:var(--text)!important; }
-    .quote span { color:var(--gold-light); }
-    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .tile { min-height:205px; padding:25px; border:1px solid rgba(216,181,106,.17); border-radius:18px; background:rgba(16,18,23,.72); }
-    .number { color:var(--gold); font-size:.75rem; letter-spacing:.15em; }
-    .tile h3 { margin:28px 0 8px; font-size:1.2rem; }
-    .tile p { color:var(--muted); font-size:.9rem; margin:0; }
-    .pill-list { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
-    .pill { border:1px solid var(--line); border-radius:99px; padding:8px 14px; color:#d7d2c6; font-size:.82rem; }
-    .timeline { border-left:1px solid var(--line); margin-left:8px; padding-left:28px; display:grid; gap:25px; }
-    .timeline-item { position:relative; }
-    .timeline-item:before { content:""; position:absolute; width:9px; height:9px; border-radius:50%; background:var(--gold); left:-33px; top:8px; box-shadow:0 0 15px rgba(216,181,106,.6); }
-    .timeline-item h3 { margin:0 0 5px; }
-    .timeline-item p { margin:0; color:var(--muted); }
-    .contact { text-align:center; padding:110px 0; }
-    .contact p { color:var(--muted); max-width:570px; margin:18px auto 28px; }
-    footer { padding:25px 0; border-top:1px solid rgba(255,255,255,.07); color:#85858d; font-size:.78rem; }
-    footer .wrap { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
-    .gold { color:var(--gold-light); }
-    @media (max-width:800px) {
-      .hero { grid-template-columns:1fr; padding:75px 0; text-align:center; }
-      .lead { margin:auto; } .actions { justify-content:center; }
-      .visual { min-height:390px; }
-      .about-grid,.grid3 { grid-template-columns:1fr; }
-      .section-head { display:block; } .section-note { margin-top:16px; }
-      .navlinks { display:none; position:absolute; top:76px; left:0; right:0; padding:20px 22px; background:#0d0f14; flex-direction:column; border-bottom:1px solid var(--line); }
-      .navlinks.open { display:flex; } .menu { display:block; }
+    .brand {
+      color: var(--gold-light);
+      font-weight: 900;
+      letter-spacing: 2px;
+      font-size: 1.12rem;
     }
-    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      align-items: center;
+      padding: 85px 0 75px;
+    }
+    .eyebrow {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 14px 0;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      line-height: 1.04;
+      letter-spacing: -2.5px;
+    }
+    .gold { color: var(--gold); }
+    .hero p {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+    .location {
+      color: var(--gold-light);
+      font-weight: 750;
+      margin-top: 22px;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-weight: 750;
+      transition: .2s;
+    }
+    .button.primary {
+      background: linear-gradient(110deg, #c9963d, #f2d48d);
+      color: #10131a;
+      border: 0;
+    }
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(67, 181, 255, .18);
+    }
+
+    section { padding: 70px 0; }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin: 0 0 10px;
+    }
+    .section-intro { color: var(--muted); margin: 0 0 30px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 27px;
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .18);
+    }
+    .card p:first-child { margin-top: 0; }
+    .card p:last-child { margin-bottom: 0; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+    }
+    .fact {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .fact:last-child { border: 0; }
+    .fact strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: .84rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .fact span { color: var(--muted); }
+
+    .timeline { display: grid; gap: 18px; }
+    .timeline-item {
+      border-left: 2px solid var(--gold);
+      padding: 2px 0 5px 20px;
+    }
+    .timeline-item h3 { margin: 0 0 5px; }
+    .date { color: var(--blue); font-weight: 750; font-size: .9rem; }
+    .timeline-item p { color: var(--muted); margin: 5px 0 0; }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 12px; }
+    .skill {
+      border: 1px solid rgba(232, 189, 104, .4);
+      color: var(--gold-light);
+      background: rgba(232, 189, 104, .07);
+      border-radius: 999px;
+      padding: 10px 17px;
+      font-weight: 700;
+    }
+    .project-card { border-top: 3px solid var(--blue); }
+    .project-card h3 { color: var(--gold-light); margin-top: 0; }
+    .social-link { color: var(--blue); font-weight: 800; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      text-align: center;
+    }
+    footer span { color: var(--gold); }
+
+    @media (max-width: 720px) {
+      nav { align-items: flex-start; flex-direction: column; padding: 15px 0; }
+      .nav-links { gap: 10px 15px; }
+      .hero { min-height: 68vh; padding: 65px 0; }
+      .about-grid { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -1.5px; }
+      section { padding: 55px 0; }
+      .card { padding: 22px; }
+    }
   </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <nav class="wrap">
-      <a class="brand" href="#home">am <span>edga kasinisala</span></a>
-      <button class="menu" aria-label="Toggle navigation" onclick="document.querySelector('.navlinks').classList.toggle('open')">Menu</button>
-      <div class="navlinks">
-        <a href="#about">About</a><a href="#interests">Interests</a><a href="#vision">Vision</a><a href="#achievements">Journey</a><a href="#contact">Contact</a>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">KASINISALA</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#project">Project</a>
+        <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <div class="wrap hero" id="home">
+    <section class="hero container" id="home">
       <div>
-        <div class="eyebrow">Independent mind · Boundless ambition</div>
-        <h1>Thinking beyond<br>the <em>ordinary.</em></h1>
-        <p class="lead">I’m <strong class="gold">Your Name</strong> — a curious mind driven by ideas, discovery and the pursuit of meaningful progress. This is my space to share what I’m learning, what I’m building and where I’m going.</p>
-        <div class="actions">
-          <a class="btn primary" href="#about">Discover my story</a>
-          <a class="btn secondary" href="#contact">Get in touch ↗</a>
-        </div>
-      </div>
-      <div class="visual" aria-label="Profile image placeholder">
-        <div class="orbit"><i class="orbit-dot"></i></div>
-        <div class="portrait"><div class="monogram">YN</div><small>Replace with your photo</small></div>
-      </div>
-    </div>
-
-    <section id="about">
-      <div class="wrap">
-        <div class="section-head"><div><div class="eyebrow">01 / The person</div><h2>A little about me.</h2></div><p class="section-note">A personal introduction — built around curiosity, discipline and the courage to think independently.</p></div>
-        <div class="about-grid">
-          <article class="card"><h3>My story</h3><p>[Write your biography here: where your journey began, what shaped you, and what matters most to you.]</p></article>
-          <article class="card"><h3>My philosophy</h3><p class="quote">“Stay curious. <span>Think deeply.</span> Build with purpose. Let the work speak.”</p></article>
+        <div class="eyebrow">Personal portfolio · Tanzania</div>
+        <h1>Welcome,<br><span class="gold">Tanzania.</span></h1>
+        <p>
+          My name is <strong>Edga Remmy Kasinisala</strong>, also known as
+          <strong>Kasiedixx</strong>. I am a student, athlete and aspiring
+          graphic designer, passionate about learning, creativity and personal growth.
+        </p>
+        <div class="location">⌖ Dar es Salaam, Tanzania</div>
+        <div class="buttons">
+          <a class="button primary" href="#about">Discover my story</a>
+          <a class="button" href="#contact">Connect with me</a>
         </div>
       </div>
     </section>
 
-    <section id="interests">
-      <div class="wrap">
-        <div class="section-head"><div><div class="eyebrow">02 / Curiosity</div><h2>What moves my mind.</h2></div><p class="section-note">The subjects and ideas that keep me asking questions and exploring new possibilities.</p></div>
-        <div class="grid3">
-          <article class="tile"><div class="number">01 — SCIENCE</div><h3>Physics</h3><p>Understanding the principles that shape our universe, from the very small to the cosmic scale.</p></article>
-          <article class="tile"><div class="number">02 — LOGIC</div><h3>Mathematics</h3><p>Finding patterns, solving problems and using clear reasoning to make sense of complexity.</p></article>
-          <article class="tile"><div class="number">03 — POSSIBILITY</div><h3>Technology</h3><p>Exploring how innovation and thoughtful design can turn ambitious ideas into reality.</p></article>
+    <section class="container" id="about">
+      <h2 class="section-title">About <span class="gold">Me</span></h2>
+      <p class="section-intro">My background, journey and ambitions.</p>
+
+      <div class="about-grid">
+        <div class="card">
+          <p>
+            I was born in Tanzania in 2007. My educational journey began in 2012,
+            when I started primary school. I continued my primary education until
+            2020 and achieved Grade A in every subject in my national examinations.
+          </p>
+          <p>
+            I then joined <strong>Tabora Boys Secondary School</strong>, a school
+            where Tanzania's Father of the Nation, Mwalimu Julius Nyerere, studied.
+            I spent four years there before sitting for the Form Four National
+            Examinations (NECTA CSEE), in which I achieved
+            <strong>Division I with 7 points</strong>.
+          </p>
+          <p>
+            In 2025, I joined <strong>Rungwe High School</strong> in Mbeya City.
+            I am studying Physics, Advanced Mathematics and Computer Science,
+            with my studies planned to run from 2025 to 2027.
+          </p>
         </div>
-        <div class="pill-list"><span class="pill">Continuous learning</span><span class="pill">Problem solving</span><span class="pill">Creative thinking</span><span class="pill">Research</span><span class="pill">Innovation</span></div>
+
+        <div class="card">
+          <div class="fact"><strong>Full name</strong><span>Edga Remmy Kasinisala</span></div>
+          <div class="fact"><strong>Also known as</strong><span>Kasiedixx</span></div>
+          <div class="fact"><strong>Born</strong><span>2007 · Tanzania</span></div>
+          <div class="fact"><strong>Home</strong><span>Dar es Salaam, Tanzania</span></div>
+          <div class="fact"><strong>Current school</strong><span>Rungwe High School · Mbeya City</span></div>
+          <div class="fact"><strong>Subjects</strong><span>Physics · Advanced Mathematics · Computer Science</span></div>
+        </div>
       </div>
     </section>
 
-    <section id="vision">
-      <div class="wrap">
-        <div class="section-head"><div><div class="eyebrow">03 / Direction</div><h2>The vision ahead.</h2></div><p class="section-note">A place to define the future I’m working towards — one deliberate step at a time.</p></div>
-        <div class="about-grid">
-          <article class="card"><h3>My ambition</h3><p>[Describe the impact you hope to make, the fields you want to explore, and the goals you are working towards.]</p></article>
-          <article class="card"><h3>My guiding principles</h3><p>Curiosity over assumption. Consistency over shortcuts. Learning over ego. Purpose over noise.</p></article>
+    <section class="container" id="education">
+      <h2 class="section-title">Education <span class="gold">Journey</span></h2>
+      <p class="section-intro">The key milestones in my academic journey.</p>
+
+      <div class="card timeline">
+        <div class="timeline-item">
+          <div class="date">2012–2020</div>
+          <h3>Primary Education</h3>
+          <p>Completed primary school and achieved Grade A in every subject in the national examinations.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="date">Four years · Secondary Education</div>
+          <h3>Tabora Boys Secondary School</h3>
+          <p>Completed Form Four and earned Division I with 7 points in the NECTA Certificate of Secondary Education Examination (CSEE).</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="date">2025–2027</div>
+          <h3>Rungwe High School · Mbeya City</h3>
+          <p>Studying Physics, Advanced Mathematics and Computer Science.</p>
         </div>
       </div>
     </section>
 
-    <section id="achievements">
-      <div class="wrap">
-        <div class="section-head"><div><div class="eyebrow">04 / Progress</div><h2>My journey so far.</h2></div><p class="section-note">A living record of milestones, skills and experiences. Add real achievements as they happen.</p></div>
-        <div class="about-grid">
-          <article class="card"><h3>Skills & strengths</h3><p>[Add your strongest skills, projects, languages, tools or talents.]</p><div class="pill-list"><span class="pill">Analytical thinking</span><span class="pill">Independent learning</span><span class="pill">Communication</span><span class="pill">Adaptability</span></div></article>
-          <article class="card"><h3>Milestones & achievements</h3><div class="timeline">
-            <div class="timeline-item"><h3>[Achievement or milestone]</h3><p>[Year] · [Short description]</p></div>
-            <div class="timeline-item"><h3>[Project or experience]</h3><p>[Year] · [What you learned or accomplished]</p></div>
-            <div class="timeline-item"><h3>[Next milestone]</h3><p>In progress · [A goal you are pursuing]</p></div>
-          </div></article>
-        </div>
+    <section class="container" id="skills">
+      <h2 class="section-title">Hobbies &amp; <span class="gold">Skills</span></h2>
+      <p class="section-intro">Things I enjoy and abilities I continue to develop.</p>
+      <div class="skills">
+        <span class="skill">Athletics</span>
+        <span class="skill">Basketball</span>
+        <span class="skill">Graphic Design</span>
       </div>
     </section>
 
-    <section id="contact" class="contact">
-      <div class="wrap">
-        <div class="eyebrow">05 / Connection</div>
-        <h2>Ideas grow through <span class="gold">connection.</span></h2>
-        <p>Have a thoughtful idea, an interesting opportunity or a project worth exploring? Reach out or find me through the links below.</p>
-        <div class="actions" style="justify-content:center">
-          <a class="btn primary" href="mailto:your.email@example.com">Email me ↗</a>
-          <a class="btn secondary" href="[YOUR-SOCIAL-LINK]">Social profile ↗</a>
-        </div>
-        <div class="pill-list" style="justify-content:center"><span class="pill">Instagram: @yourhandle</span><span class="pill">LinkedIn: [Your profile]</span><span class="pill">Other: [Add link]</span></div>
+    <section class="container" id="project">
+      <h2 class="section-title">My <span class="gold">Project</span></h2>
+      <p class="section-intro">Creativity brought to life through design.</p>
+      <div class="card project-card">
+        <h3>Creative Artwork Through Graphic Design</h3>
+        <p>
+          My project is to create original and imaginative artwork through
+          graphic design. I aim to combine visual ideas, colour and digital
+          creativity to communicate messages and produce distinctive designs.
+        </p>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <h2 class="section-title">Let's <span class="gold">Connect</span></h2>
+      <p class="section-intro">Follow my creative journey on Instagram.</p>
+      <div class="card">
+        <p>
+          Instagram:
+          <a class="social-link" href="https://www.instagram.com/kasiedixx/"
+             target="_blank" rel="noopener noreferrer">@kasiedixx ↗</a>
+        </p>
       </div>
     </section>
   </main>
 
-  <footer><div class="wrap"><span>© <span id="year"></span> YOUR NAME. All rights reserved.</span><span>Designed with intention · Built for what’s next.</span></div></footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <footer>
+    <div class="container">© <span id="year"></span> <span>Edga Remmy Kasinisala · Kasiedixx</span> · Made in Tanzania.</div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
